@@ -108,7 +108,7 @@ class Comments:
         @self.env.with_transaction()
         def insert_comment(db):
             cursor = db.cursor()
-            sql = "INSERT INTO code_comments values(NULL, %s)" % ', '.join(['%s'] * len(values))
+            sql = "INSERT INTO code_comments values(DEFAULT, %s)" % ', '.join(['%s'] * len(values))
             cursor.execute(sql, values)
             comment_id[0] = db.get_last_id(cursor, 'code_comments')
         return comment_id[0]
